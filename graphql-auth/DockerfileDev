@@ -12,6 +12,15 @@ COPY . .
 
 CMD npm run dev
 
+FROM node:20
+
+COPY --from=builder /app/pnpm-lock.yaml ./
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/prisma ./prisma/
+
+
+CMD [ "npm", "run", "start:prod" ]
+
 ################################
 version: '3.8'
 
