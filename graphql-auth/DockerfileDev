@@ -1,0 +1,19 @@
+FROM node:20 AS build
+
+WORKDIR /app
+
+COPY package*.json ./
+COPY pnpm-lock.yaml ./
+COPY prisma ./prisma/
+
+RUN npm install
+
+COPY . .
+
+CMD npm run dev
+
+################################
+version: '3.8'
+
+service : 
+ 

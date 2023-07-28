@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+
+    #serveur de base de donnees
+    database:
+       image: 'mariadb:10.3'
+       container_name: database
+       environment: 
+          - "${DB_NAME}": "test"
+          - "${DB_ROOT_PASSWORD}": "passwd"
+
+    #lancer l'application en mode dev
+
+    serveur: 
+    
